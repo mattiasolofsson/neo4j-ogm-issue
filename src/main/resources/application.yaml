@@ -1,0 +1,14 @@
+server:
+  port: 8090
+spring:
+  datasource:
+    url: jdbc:neo4j:${spring.data.neo4j.uri}
+    driver-class-name: org.neo4j.jdbc.http.HttpDriver
+    username: ${spring.data.neo4j.username}
+    password: ${spring.data.neo4j.password}
+  data:
+    neo4j:
+      uri: http://localhost:7475
+      username: neo4j
+      password: neo
+      auto-index: update

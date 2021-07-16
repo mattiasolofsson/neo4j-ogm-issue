@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<changelog xmlns="https://liquigraph.github.io/schema/1.0/liquigraph.xsd">
+    <changeset id="01" author="mattias">
+        <query>create (:Design {uuid:'2e3e61eb-7725-4c0a-93be-219c8961ad92', name:'Design 1'})-[:HAS_PRODUCT]->
+            (:Product {uuid:'656c0ebe-bd34-41f3-a6b4-ad322b870369', name:'Product 1'})</query>
+        <query>match (d:Design) create (d)-[:HAS_PRODUCT]->
+            (:Product {uuid:'49606e88-9509-4cae-86fd-1f6c70788b95', name:'Product 2'})</query>
+        <query>match (d:Design)--(p:Product {uuid:'656c0ebe-bd34-41f3-a6b4-ad322b870369'})
+            merge (d)-[:HAS_STOCK_KEEPING_UNIT]->(:StockKeepingUnit {uuid:'3e3fd46c-c8c2-4b5d-a939-e0c5d8ea18a1', name:'SKU 1'})-[:HAS_PRODUCT]->(p)</query>
+        <query>match (d:Design)--(p:Product {uuid:'49606e88-9509-4cae-86fd-1f6c70788b95'})
+            merge (d)-[:HAS_STOCK_KEEPING_UNIT]->(:StockKeepingUnit {uuid:'93caa5a1-3ea5-4728-9158-036f73adab57', name:'SKU 2'})-[:HAS_PRODUCT]->(p)</query>
+    </changeset>
+</changelog>
