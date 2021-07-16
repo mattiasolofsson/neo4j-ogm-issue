@@ -17,6 +17,9 @@ public class Design extends Entity {
     @Relationship(value = "HAS_PRODUCT")
     private List<Product> products = new ArrayList<>();
 
+    @Relationship(value = "HAS_STOCK_KEEPING_UNIT")
+    private List<StockKeepingUnit> stockKeepingUnits = new ArrayList<>();
+
     public Design() {
     }
 
@@ -30,5 +33,18 @@ public class Design extends Entity {
 
     public void setProducts(List<Product> products) {
         this.products = products;
+    }
+
+    public List<StockKeepingUnit> getStockKeepingUnits() {
+        return stockKeepingUnits;
+    }
+
+    public void setStockKeepingUnits(List<StockKeepingUnit> stockKeepingUnits) {
+        this.stockKeepingUnits = stockKeepingUnits;
+    }
+
+    public void addStockKeepingUnit(StockKeepingUnit stockKeepingUnit) {
+        stockKeepingUnits.add(stockKeepingUnit);
+        stockKeepingUnit.setDesign(this);
     }
 }

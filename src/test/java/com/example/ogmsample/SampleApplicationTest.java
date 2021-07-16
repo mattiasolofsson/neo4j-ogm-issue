@@ -1,8 +1,6 @@
 package com.example.ogmsample;
 
-import com.example.ogmsample.boundary.DesignResult;
-import com.example.ogmsample.entity.Design;
-import com.example.ogmsample.entity.Product;
+import com.example.ogmsample.entity.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +28,6 @@ public class SampleApplicationTest {
         Product product = new Product();
         Design design = new Design(designId);
         product.setDesign(design);
-        DesignResult designResult = restTemplate.postForObject("http://localhost:" + port + "/designs/" + designId.toString() + "/products", product, DesignResult.class, designId);
-        System.out.println("designResult = " + designResult);
+        restTemplate.postForObject("http://localhost:" + port + "/designs/" + designId.toString() + "/products", product, StockKeepingUnit.class, designId);
     }
 }
